@@ -21,9 +21,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }} 
           password: ${{ secrets.DOCKER_PASSWORD }}
-          # repository: ${{ github.repositiry }} coje el nombre del repository(everecidocker/fe-testeatest)
+          # repository: ${{ github.repositiry }} coje el nombre del repository(everecidocker/angular-basic)
           
-          repository: everecidocker/fe-testeatest
+          repository: everecidocker/angular-basic
           # cuando construye la imagen la tagea con la ref y con el sha de docker
           tag_with_ref: true
           tag_with_sha: true
@@ -43,7 +43,7 @@ jobs:
           # Establecemos argumentos al kubectl
           # deployment/my-app(nombre del deployment que va a estar en el cluster de kubernetes)(tiene que estar creado si no esto fallará)
           # hay que fijarse en el deployment.yaml que he hecho
-          args: set image --record deployment/fe-testeatest-deployment fe-testeatest=everecidocker/fe-testeatest:${{ github.sha }}
+          args: set image --record deployment/angular-basic-deployment angular-basic=everecidocker/angular-basic:${{ github.sha }}
          
         # Le añadimos otro paso para hacer para verificar que el deployment esta corriendo con un rollout
       - name: verify deployment
@@ -52,12 +52,12 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
           KUBECTL_VERSION: "1.15"
         with:
-          args: '"rollout status deployment/fe-testeatest-deployment"'
+          args: '"rollout status deployment/angular-basic-deployment"'
 # una vez instalado todo
 # entro el pod, previamente he hecho un kubectl get pods, he instalo curl 
 # kubectl exec -it my-app-66b8679588-jnhrt apk add curl
 # hago un cuirl a localhost para ver que esta corriendo
-# kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated)
+# kubectl exec -it my-app-67bf85fff-jzjfq curl localhost(deprecated) 
 # kubectl exec -it my-app-675846fb9d-9hjlx -- curl localhost
 # kubectl exec -it my-app-77f44d88db-gv5rr -- curl localhost
 # kubectl exec -it my-app-744bc65997-vwjbw -- curl localhost  

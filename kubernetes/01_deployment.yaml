@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fe-testeatest-deployment
+  name: angular-basic-deployment
   labels:
-    app: fe-testeatest
+    app: angular-basic
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fe-testeatest
+      app: angular-basic
       tier: web
   template:
     metadata:
       labels:
-        app: fe-testeatest
+        app: angular-basic
         tier: web
     spec:
       containers:
-      - name: fe-testeatest
-        image: everecidocker/fe-testeatest:latest
+      - name: angular-basic
+        image: everecidocker/angular-basic:latest
         ports:
         - containerPort: 4200
-          name: fe-testeatest
+          name: angular-basic

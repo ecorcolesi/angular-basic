@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fe-testeatest-service
+  name: angular-basic-service
   labels:
-    app: fe-testeatest
+    app: angular-basic
 spec:
   ports:
     - port: 80 # puerto del pod
       targetPort: 4200 #... apunta al containerPort
       nodePort: 30000 # .. todo lo que venga al puerto 30000 del NodoWorker lo apuntas al puerto 80 del pod
   selector:
-    app: fe-testeatest
+    app: angular-basic
     tier: web
   type: NodePort
