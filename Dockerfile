@@ -1,9 +1,7 @@
 FROM node:12.18.3
 # la imagen inicial de node que me traje con el comando (docker pull node:10.15.1) tra el usuairo node por defecto
 
-RUN apt -y install npm
-
-RUN npm install -g @angular/cli
+RUN apt-get -y install npm && npm install -g @angular/cli
 
 # Creamos todo el arbol de directorios (/home/node/app/node_modules) -p(si el parent no existe, lo crea)
 RUN mkdir -p /home/node/app/angular-basic/node_modules && chown -R node:node /home/node/app/angular-basic
